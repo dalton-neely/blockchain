@@ -1,0 +1,24 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "Testing Blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalton-neely/blockchain.git"
+  },
+  "author": "Dalton Neely",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dalton-neely/blockchain/issues"
+  },
+  "homepage": "https://github.com/dalton-neely/blockchain#readme",
+  "dependencies": {
+    "jshashes": "^1.0.8",
+    "require.js": "^1.0.0"
+  }
+}
