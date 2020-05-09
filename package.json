@@ -20,5 +20,8 @@
   "dependencies": {
     "jshashes": "^1.0.8",
     "require.js": "^1.0.0"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
   }
 }
