@@ -5,8 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "test": "babel src --out-dir dist && mocha 'dist/**/*.spec.js'",
+    "pretest": "npm run build",
+    "test": "mocha 'dist/**/*.spec.js'",
+    "prebuild": "npm run clean",
     "build": "babel src --out-dir dist",
+    "prestart": "npm run build",
     "start": "node dist/index.js"
   },
   "repository": {
