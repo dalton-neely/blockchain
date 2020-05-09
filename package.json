@@ -7,7 +7,7 @@
     "clean": "rimraf dist",
     "pretest": "npm run build",
     "test": "mocha 'dist/**/*.spec.js'",
-    "prebuild": "npm run clean",
+    "prebuild": "npm run clean && eslint src --fix",
     "build": "babel src --out-dir dist",
     "prestart": "npm run build",
     "start": "node dist/index.js"
@@ -32,6 +32,9 @@
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.6",
     "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "mocha": "^7.1.2",
     "rimraf": "^3.0.2",
     "sinon": "^9.0.2"

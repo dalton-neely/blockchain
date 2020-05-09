@@ -1,8 +1,8 @@
-export class Transaction {
-    constructor(from, to, data) {
-        this.from = from
-        this.to = to
-        this.data = data
-        this.timestamp = Date.now()
-    }
+export default class Transaction {
+  constructor(from, to, data) {
+    this.from = from;
+    this.to = to;
+    this.data = data;
+    this.timestamp = Date.now();
+  }
 }
