@@ -7,7 +7,7 @@
     "clean": "rimraf dist",
     "pretest": "npm run build",
     "test": "mocha 'dist/**/*.spec.js'",
-    "prebuild": "npm run clean && eslint src --fix",
+    "coverage": "cross-env NODE_ENV=test nyc mocha src",
     "build": "babel src --out-dir dist",
     "prestart": "npm run build",
     "start": "node dist/index.js"
@@ -31,12 +31,28 @@
     "@babel/core": "^7.9.6",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "mocha": "^7.1.2",
+    "nyc": "^15.0.1",
     "rimraf": "^3.0.2",
     "sinon": "^9.0.2"
+  },
+  "nyc": {
+    "require": [
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "html"
+    ],
+    "sourceMap": false,
+    "instrument": false
   }
 }

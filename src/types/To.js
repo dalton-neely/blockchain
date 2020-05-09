@@ -1,4 +1,4 @@
-import { stringTypeError } from '../errors/TypeErrors';
+import { stringTypeError } from '../errors';
 
 export default class To {
   constructor(to) {

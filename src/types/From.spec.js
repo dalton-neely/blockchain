@@ -1,9 +1,7 @@
 import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import From from './From';
-
-const STRING = 'foo';
-const INTEGER = 1;
+import { STRING, INTEGER } from '../test-utils';
 
 describe('From', () => {
   it('should not throw an error when the type is string', () => {

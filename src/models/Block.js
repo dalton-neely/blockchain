@@ -6,28 +6,18 @@ export default class Block {
     this.previousHash = previousHash;
   }
 
-  reduce(finalString, transaction) {
-    return [
-      finalString,
-      transaction.from,
-      transaction.to,
-      transaction.data.toString(),
-      transaction.timestamp.toString(),
-    ].join();
-  }
-
-  convertToString() {
-    return this.transactions.reduce(this.reduce);
+  stringForHashing() {
+    return this.transactions.reduce((str, transaction) => str + transaction.stringForHashing(), '');
   }
 
   generateHash(hashFunction, target) {
     while (!this.hash.startsWith(target)) {
       this.nonce += 1;
-      this.hash = hashFunction.hex(this.convertToString() + this.nonce);
+      this.hash = hashFunction.hex(this.stringForHashing() + this.nonce);
     }
   }
 
-  add(transaction) {
+  addTransaction(transaction) {
     this.transactions.push(transaction);
   }
 }
