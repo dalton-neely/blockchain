@@ -1,6 +1,5 @@
-const Hashes = require('jshashes')
-const {Transaction} = require("./Transaction")
-const {BlockChain} = require("./BlockChain")
+import Hashes from "jshashes"
+import { Transaction, BlockChain } from "./models";
 const sha256 = new Hashes.SHA256
 
 const blockChain = new BlockChain("0000", sha256, "dalton")

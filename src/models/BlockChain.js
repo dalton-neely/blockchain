@@ -1,10 +1,11 @@
-const {Block} = require("./Block")
+import { Block } from "./Block";
+import { Transaction } from "./Transaction";
 
-class BlockChain {
+export class BlockChain {
     constructor(target, hashFunction, creator) {
         this.target = target
         this.hasFunction = hashFunction
-        this.blocks = [Block.genesisBlock(target, hashFunction, creator)]
+        this.blocks = [this.genesisBlock(creator)]
         this.pending = []
     }
 
@@ -34,6 +35,11 @@ class BlockChain {
         })
         return sum
     }
-}
 
-module.exports = { BlockChain }
+    genesisBlock(creator) {
+        let block = new Block(null)
+        block.add(new Transaction("0", creator, 10000000))
+        block.hash = this.target
+        return block
+    }
+}

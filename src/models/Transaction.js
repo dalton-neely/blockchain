@@ -1,4 +1,4 @@
-class Transaction {
+export class Transaction {
     constructor(from, to, data) {
         this.from = from
         this.to = to
@@ -6,5 +6,3 @@ class Transaction {
         this.timestamp = Date.now()
     }
 }
-
-module.exports = { Transaction }
