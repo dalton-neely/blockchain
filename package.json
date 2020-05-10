@@ -10,10 +10,14 @@
     "coverage": "cross-env NODE_ENV=test nyc mocha src",
     "prebuild": "npm run clean  && eslint src --fix",
     "build": "babel src --out-dir dist",
-    "prestart": "npm run build",
-    "start": "node dist/cli-program.js",
+    "prestart:cli": "npm run build",
+    "start:cli": "node dist/cli-program.js",
     "prestart:api": "npm run build",
-    "start:api": "node dist/blockchain-api.js"
+    "start:api": "node dist/blockchain-api.js",
+    "prestart:server": "npm run build",
+    "start:server": "node dist/server.js",
+    "prestart": "npm run build",
+    "start": "concurrently --kill-others \"node dist/blockchain-api.js\" \"node dist/server.js\""
   },
   "repository": {
     "type": "git",
@@ -38,6 +42,7 @@
     "@babel/register": "^7.9.0",
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
+    "concurrently": "^5.2.0",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",

@@ -1,7 +1,7 @@
 import express from 'express';
 import DataService from './api/DataService';
 
-const PORT = 80;
+const PORT = 8080;
 const app = express();
 const dataService = new DataService();
 
