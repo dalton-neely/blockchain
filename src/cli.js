@@ -106,6 +106,21 @@ function restoreBlockchain() {
   });
 }
 
+const CLOSING_SCREEN = `
+---------------------------
+######### EXITING #########
+---------------------------
+GOODBYE, ${creator.toUpperCase()}!
+`;
+
+function closeBlockchain() {
+  clearWindow();
+  console.log(CLOSING_SCREEN);
+  saveBlockchain();
+  read.close();
+  process.exit();
+}
+
 const MAIN_MENU = () => `
 ---------------------------
 ######## MAIN MENU ########
@@ -137,13 +152,16 @@ function mainMenu() {
         break;
       case 'x':
       case 'X':
-        saveBlockchain();
-        read.close();
+        closeBlockchain();
         break;
       default:
         unrecognizedInput(mainMenu);
     }
   });
 }
+
+process.on('exit', () => {
+  closeBlockchain();
+});
 
 callWindow(mainMenu);
