@@ -19,5 +19,17 @@
         "no-use-before-define": "off",
         "no-console": "off",
         "no-param-reassign": "off"
-    }
+    },
+    "overrides": [
+        {
+            "files": ["**/*.jsx"],
+            "extends": ["plugin:react/recommended"],
+            "plugins": ["react"],
+            "parserOptions": {
+                "ecmaFeatures": {
+                    "jsx": true
+                }
+            }
+        }
+    ]
 }

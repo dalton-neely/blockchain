@@ -10,14 +10,17 @@
     "coverage": "cross-env NODE_ENV=test nyc mocha src",
     "prebuild": "npm run clean  && eslint src --fix",
     "build": "babel src --out-dir dist",
+    "build:frontend": "copyfiles -f src/static/**/*.html dist/static && webpack",
     "prestart:cli": "npm run build",
     "start:cli": "node dist/cli-program.js",
     "prestart:api": "npm run build",
     "start:api": "node dist/blockchain-api.js",
-    "prestart:server": "npm run build",
+    "prestart:server": "npm run build && npm run build:frontend",
     "start:server": "node dist/server.js",
-    "prestart": "npm run build",
-    "start": "concurrently --kill-others \"node dist/blockchain-api.js\" \"node dist/server.js\""
+    "prestart": "npm run build && npm run build:frontend",
+    "start": "concurrently --kill-others \"node dist/blockchain-api.js\" \"node dist/server.js\"",
+    "predevelop": "npm run prestart",
+    "develop": "concurrently --kill-others \"node dist/blockchain-api.js\" \"nodemon -e js,jsx,html --watch src/static dist/server.js\""
   },
   "repository": {
     "type": "git",
@@ -32,6 +35,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "jshashes": "^1.0.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "require.js": "^1.0.0"
   },
   "devDependencies": {
@@ -39,18 +44,25 @@
     "@babel/core": "^7.9.6",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
     "@babel/register": "^7.9.0",
+    "babel-loader": "^8.1.0",
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
     "concurrently": "^5.2.0",
+    "copyfiles": "^2.2.0",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-react": "^7.19.0",
     "mocha": "^7.1.2",
+    "nodemon": "^2.0.3",
     "nyc": "^15.0.1",
     "rimraf": "^3.0.2",
-    "sinon": "^9.0.2"
+    "sinon": "^9.0.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "nyc": {
     "require": [
