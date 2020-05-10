@@ -44,4 +44,80 @@ describe('Block', () => {
 
     expect(block.transactions[2]).to.eq(newTransaction);
   });
+
+  it('should be able to restore from json', () => {
+    const transaction = new Transaction(FOO, BAR, 500);
+    transaction.timestamp = 1589085716439;
+    const newBlock = new Block('0000');
+    newBlock.addTransaction(transaction);
+    const json = {
+      transactions: [
+        {
+          from: {
+            key: FOO,
+          },
+          to: {
+            key: BAR,
+          },
+          data: 500,
+          timestamp: 1589085716439,
+        },
+      ],
+      hash: '',
+      nonce: 0,
+      previousHash: '0000',
+    };
+
+    expect(Block.restore(json)).to.deep.eq(newBlock);
+  });
+
+  it('should be able to restore from json from an array', () => {
+    const transactionOne = new Transaction(FOO, BAR, 500);
+    transactionOne.timestamp = 1589085716439;
+    const transactionTwo = new Transaction(BAR, FOO, 300);
+    transactionTwo.timestamp = 1589085716459;
+    const newBlockOne = new Block('0000');
+    newBlockOne.addTransaction(transactionOne);
+    const newBlockTwo = new Block('0000');
+    newBlockTwo.addTransaction(transactionTwo);
+    const blocks = [newBlockOne, newBlockTwo];
+    const json = [
+      {
+        transactions: [
+          {
+            from: {
+              key: FOO,
+            },
+            to: {
+              key: BAR,
+            },
+            data: 500,
+            timestamp: 1589085716439,
+          },
+        ],
+        hash: '',
+        nonce: 0,
+        previousHash: '0000',
+      },
+      {
+        transactions: [
+          {
+            from: {
+              key: BAR,
+            },
+            to: {
+              key: FOO,
+            },
+            data: 300,
+            timestamp: 1589085716459,
+          },
+        ],
+        hash: '',
+        nonce: 0,
+        previousHash: '0000',
+      },
+    ];
+
+    expect(Block.restoreAll(json)).to.deep.eq(blocks);
+  });
 });

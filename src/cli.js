@@ -35,7 +35,7 @@ function unrecognizedInput(callback) {
 function addTransaction() {
   read.question('TO: ', (to) => {
     read.question('AMOUNT: ', (amount) => {
-      blockchain.addTransaction(new Transaction(creator, to, amount));
+      blockchain.addTransaction(new Transaction(creator, to, Number(amount)));
       transactionMenu();
     });
   });
@@ -101,7 +101,7 @@ function restoreBlockchain() {
     if (err) {
       console.log('Could not restore blockchain');
     }
-    blockchain = JSON.parse(data);
+    blockchain = BlockChain.restore(JSON.parse(data));
     mainMenu();
   });
 }

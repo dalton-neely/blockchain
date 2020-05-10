@@ -1,3 +1,5 @@
+import Transaction from './Transaction';
+
 export default class Block {
   constructor(previousHash) {
     this.transactions = [];
@@ -19,5 +21,21 @@ export default class Block {
 
   addTransaction(transaction) {
     this.transactions.push(transaction);
+  }
+
+  static restore(jsonObj) {
+    const block = new Block(jsonObj.previousHash);
+    block.hash = jsonObj.hash;
+    block.nonce = jsonObj.nonce;
+    block.transactions = Transaction.restoreAll(jsonObj.transactions);
+    return block;
+  }
+
+  static restoreAll(jsonArray) {
+    const blocks = [];
+    jsonArray.forEach((block) => {
+      blocks.push(this.restore(block));
+    });
+    return blocks;
   }
 }

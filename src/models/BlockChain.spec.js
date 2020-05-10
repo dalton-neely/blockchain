@@ -50,4 +50,51 @@ describe('BlockChain', () => {
 
     expect(blockchain.balance(FOO)).to.eq(blockchain.startingAmount);
   });
+
+  it('should be able to restore a blockchain from JSON', () => {
+    const json = {
+      target: '0000',
+      hashFunction: {},
+      startingAmount: 1000000,
+      blocks: [
+        {
+          transactions: [
+            {
+              from: {
+                key: '0',
+              },
+              to: {
+                key: FOO,
+              },
+              data: 1000000,
+              timestamp: 1589085709082,
+            },
+          ],
+          hash: '0000',
+          nonce: 0,
+          previousHash: null,
+        },
+      ],
+      pending: [
+        {
+          from: {
+            key: FOO,
+          },
+          to: {
+            key: BAR,
+          },
+          data: 500,
+          timestamp: 1589085716439,
+        },
+      ],
+    };
+
+    const newBlockchain = new BlockChain('0000', {}, FOO);
+    const newTransaction = new Transaction(FOO, BAR, 500);
+    newTransaction.timestamp = 1589085716439;
+    newBlockchain.addTransaction(newTransaction);
+    newBlockchain.blocks[0].transactions[0].timestamp = 1589085709082;
+
+    expect(BlockChain.restore(json)).to.deep.eq(newBlockchain);
+  });
 });

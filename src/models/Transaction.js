@@ -11,4 +11,18 @@ export default class Transaction {
   stringForHashing() {
     return `${this.from.key}${this.to.key}${this.data}${this.timestamp}`;
   }
+
+  static restore(jsonObj) {
+    const transaction = new Transaction(jsonObj.from.key, jsonObj.to.key, jsonObj.data);
+    transaction.timestamp = jsonObj.timestamp;
+    return transaction;
+  }
+
+  static restoreAll(jsonArray) {
+    const transactions = [];
+    jsonArray.forEach((transaction) => {
+      transactions.push(this.restore(transaction));
+    });
+    return transactions;
+  }
 }

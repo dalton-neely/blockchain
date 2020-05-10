@@ -20,4 +20,53 @@ describe('Transaction', () => {
     expect(actual).to.match(expected);
     expect(typeof actual).to.have.string('string');
   });
+
+  it('should be able to restore from JSON', () => {
+    const transaction = new Transaction(FOO, BAR, 500);
+    transaction.timestamp = 1589085716439;
+    const json = {
+      from: {
+        key: FOO,
+      },
+      to: {
+        key: BAR,
+      },
+      data: 500,
+      timestamp: 1589085716439,
+    };
+
+    expect(Transaction.restore(json)).to.deep.eq(transaction);
+  });
+
+  it('should be able to restore from an array of transactions', () => {
+    const transactions = [
+      new Transaction(FOO, BAR, 500),
+      new Transaction(BAR, FOO, 300),
+    ];
+    transactions[0].timestamp = 1589085716439;
+    transactions[1].timestamp = 1589085716459;
+    const json = [
+      {
+        from: {
+          key: FOO,
+        },
+        to: {
+          key: BAR,
+        },
+        data: 500,
+        timestamp: 1589085716439,
+      },
+      {
+        from: {
+          key: BAR,
+        },
+        to: {
+          key: FOO,
+        },
+        data: 300,
+        timestamp: 1589085716459,
+      },
+    ];
+    expect(Transaction.restoreAll(json)).to.deep.eq(transactions);
+  });
 });
