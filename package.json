@@ -2,7 +2,7 @@
   "name": "blockchain",
   "version": "1.0.0",
   "description": "Testing Blockchain",
-  "main": "src/cli.js",
+  "main": "src/cli-program.js",
   "scripts": {
     "clean": "rimraf dist coverage .nyc_output",
     "pretest": "npm run build",
@@ -11,7 +11,7 @@
     "prebuild": "npm run clean  && eslint src --fix",
     "build": "babel src --out-dir dist",
     "prestart": "npm run build",
-    "start": "node dist/cli.js"
+    "start": "node dist/cli-program.js"
   },
   "repository": {
     "type": "git",

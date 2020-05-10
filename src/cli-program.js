@@ -1,6 +1,6 @@
 import Hashes from 'jshashes';
 import readline from 'readline';
-import { callWindow, closeBlockchain, mainMenu } from './cli-screens';
+import { callWindow, closeBlockchain, mainMenu } from './cli';
 
 const sha256 = new Hashes.SHA256();
 
