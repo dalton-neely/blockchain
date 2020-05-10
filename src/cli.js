@@ -1,7 +1,7 @@
 import Hashes from 'jshashes';
 import readline from 'readline';
 import fs from 'fs';
-import { Transaction, BlockChain } from './models';
+import { Transaction, Blockchain } from './models';
 
 const sha256 = new Hashes.SHA256();
 
@@ -101,7 +101,7 @@ function restoreBlockchain() {
     if (err) {
       console.log('Could not restore blockchain');
     }
-    blockchain = BlockChain.restore(JSON.parse(data));
+    blockchain = Blockchain.restore(JSON.parse(data));
     mainMenu();
   });
 }
@@ -118,7 +118,7 @@ function mainMenu() {
   read.question(MAIN_MENU(), (answer) => {
     switch (answer) {
       case '1':
-        blockchain = new BlockChain(target, sha256, creator);
+        blockchain = new Blockchain(target, sha256, creator);
         callWindow(transactionMenu);
         break;
       case '2':

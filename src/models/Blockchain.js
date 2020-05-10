@@ -1,7 +1,7 @@
 import Block from './Block';
 import Transaction from './Transaction';
 
-export default class BlockChain {
+export default class Blockchain {
   constructor(target, hashFunction, creator) {
     this.target = target;
     this.hashFunction = hashFunction;
@@ -46,7 +46,7 @@ export default class BlockChain {
 
   static restore(jsonObj) {
     const genesisTransaction = jsonObj.blocks[0].transactions[0];
-    const blockchain = new BlockChain(
+    const blockchain = new Blockchain(
       jsonObj.target,
       jsonObj.hashFunction,
       genesisTransaction.to.key,

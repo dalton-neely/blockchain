@@ -2,15 +2,15 @@ import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import Hashes from 'jshashes';
 import sinon from 'sinon';
-import BlockChain from './BlockChain';
+import Blockchain from './Blockchain';
 import { BAR, FOO, INTEGER } from '../test-utils';
 import Transaction from './Transaction';
 
 const sha256 = new Hashes.SHA256();
 
-describe('BlockChain', () => {
+describe('Blockchain', () => {
   const hashFunctionSub = sinon.stub(sha256, 'hex');
-  const blockchain = new BlockChain('0000', sha256, FOO);
+  const blockchain = new Blockchain('0000', sha256, FOO);
   const transaction = new Transaction(FOO, BAR, 100);
   blockchain.addTransaction(transaction);
   hashFunctionSub.returns(`${blockchain.target}${Math.random() * 999999}`);
@@ -89,12 +89,12 @@ describe('BlockChain', () => {
       ],
     };
 
-    const newBlockchain = new BlockChain('0000', {}, FOO);
+    const newBlockchain = new Blockchain('0000', {}, FOO);
     const newTransaction = new Transaction(FOO, BAR, 500);
     newTransaction.timestamp = 1589085716439;
     newBlockchain.addTransaction(newTransaction);
     newBlockchain.blocks[0].transactions[0].timestamp = 1589085709082;
 
-    expect(BlockChain.restore(json)).to.deep.eq(newBlockchain);
+    expect(Blockchain.restore(json)).to.deep.eq(newBlockchain);
   });
 });
