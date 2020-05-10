@@ -2,7 +2,7 @@
   "name": "blockchain",
   "version": "1.0.0",
   "description": "Testing Blockchain",
-  "main": "src/index.js",
+  "main": "src/cli.js",
   "scripts": {
     "clean": "rimraf dist coverage .nyc_output",
     "pretest": "npm run build",
@@ -10,7 +10,7 @@
     "coverage": "cross-env NODE_ENV=test nyc mocha src",
     "build": "babel src --out-dir dist",
     "prestart": "npm run build",
-    "start": "node dist/index.js"
+    "start": "node dist/cli.js"
   },
   "repository": {
     "type": "git",
