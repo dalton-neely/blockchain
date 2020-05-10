@@ -8,7 +8,7 @@
     "pretest": "npm run build",
     "test": "mocha 'dist/**/*.spec.js'",
     "coverage": "cross-env NODE_ENV=test nyc mocha src",
-    "prebuild": "npm run clean",
+    "prebuild": "npm run clean  && eslint src --fix",
     "build": "babel src --out-dir dist",
     "prestart": "npm run build",
     "start": "node dist/cli.js"
