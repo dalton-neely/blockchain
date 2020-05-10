@@ -137,6 +137,7 @@ function mainMenu() {
         break;
       case 'x':
       case 'X':
+        saveBlockchain();
         read.close();
         break;
       default:
