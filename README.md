@@ -13,6 +13,7 @@ This repository is to mess around with blockchain.
     1. [How to Run API](#how-to-run-api)
 1. [Blockchain Server](#blockchain-server)
     1. [How to Run the Server](#how-to-run-the-server)
+1. [Screenshots](#screenshots)
     
 ## Features
 * Save/Restore blockchain locally for later use.
@@ -65,3 +66,6 @@ Run the following command to run the front-end server.
 ```shell script
 npm run start:server
 ```
+
+## Screenshots
+![Balance page screenshot](/docs/screenshots/balance-page.png)
