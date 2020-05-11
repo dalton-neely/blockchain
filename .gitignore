@@ -106,5 +106,8 @@ dist
 # WebStorm
 **/.idea/
 
+# Webpack
+analysis.json
+
 # Custom
 .blockchain.json
