@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Route } from 'react-router';
 import { Link, BrowserRouter } from 'react-router-dom';
+import Balance from './Balance.jsx';
 
 const Home = () => (
   <div>
@@ -13,7 +14,6 @@ const Home = () => (
     </ul>
   </div>
 );
-const Balance = () => (<h1>Balance</h1>);
 
 const App = () => (
     <BrowserRouter>
