@@ -21,7 +21,7 @@
     "prestart": "npm run build && npm run build:frontend",
     "start": "concurrently --kill-others \"node dist/blockchain-api.js\" \"node dist/server.js\"",
     "predevelop": "npm run prestart",
-    "develop": "concurrently --kill-others \"node dist/blockchain-api.js\" \"nodemon -e js,jsx,html --watch src/static dist/server.js\""
+    "develop": "concurrently --kill-others \"nodemon -e js --watch src --ignore src/static dist/blockchain-api.js\" \"nodemon -e js,jsx,html --watch src/static dist/server.js\""
   },
   "repository": {
     "type": "git",

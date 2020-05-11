@@ -1,5 +1,5 @@
 {
   "events": {
-    "restart": "npm run build:frontend"
+    "restart": "npm run build && npm run build:frontend"
   }
 }
