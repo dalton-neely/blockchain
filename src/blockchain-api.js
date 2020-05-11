@@ -1,8 +1,13 @@
 import express from 'express';
+import cors from 'cors';
 import DataService from './api/DataService';
 
 const PORT = 8080;
 const app = express();
+app.use(cors({
+  origin: 'http://localhost',
+}));
+
 const dataService = new DataService();
 
 app.get('/balance/:id', (req, res) => {
