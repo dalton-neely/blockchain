@@ -1,4 +1,35 @@
-$body-color: red
+$body-color: blue
+$text-color: lightgrey
+$background-color-main: #1A1A1B
 
 body
-  color: $body-color
+  margin: 0
+  background-color: black
+  color: $text-color
+  box-sizing: content-box
+
+#header
+  display: block
+  background-color: $background-color-main
+  padding: 10px
+
+  h1
+    margin: 0 auto
+    display: inline-block
+
+  nav
+    display: inline-block
+
+    ul
+      li
+        display: inline-block
+        list-style: none
+        margin: 10px
+      a
+        color: $text-color
+        font-size: 1.2em
+        text-decoration: none
+      a:hover
+        color: powderblue
+      a:visited
+        color: $text-color
