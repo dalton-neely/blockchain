@@ -21,7 +21,7 @@
     "prestart": "npm run build && npm run build:frontend",
     "start": "concurrently --kill-others \"node dist/blockchain-api.js\" \"node dist/server.js\"",
     "predevelop": "npm run prestart",
-    "develop": "concurrently --kill-others \"nodemon -e js --watch src --ignore src/static dist/blockchain-api.js\" \"nodemon -e js,jsx,html --watch src/static dist/server.js\""
+    "develop": "concurrently --kill-others \"nodemon -e js --watch src --ignore src/static dist/blockchain-api.js\" \"nodemon -e js,jsx,html,scss,sass --watch src/static dist/server.js\""
   },
   "repository": {
     "type": "git",
@@ -57,6 +57,7 @@
     "concurrently": "^5.2.0",
     "copyfiles": "^2.2.0",
     "cross-env": "^7.0.2",
+    "css-loader": "^3.5.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
@@ -65,7 +66,10 @@
     "nodemon": "^2.0.3",
     "nyc": "^15.0.1",
     "rimraf": "^3.0.2",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
     "sinon": "^9.0.2",
+    "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },

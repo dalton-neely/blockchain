@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Switch, Route } from 'react-router';
 import { Link, BrowserRouter } from 'react-router-dom';
 import Balance from './Balance.jsx';
+import './index.sass';
 
 const Home = () => (
   <div>
