@@ -21,4 +21,20 @@ app.get('/balance/:id', (req, res) => {
   });
 });
 
+app.post('/transaction', (req, res) => {
+  const toId = req.header('To');
+  const from = req.header('From');
+  const amount = req.header('Amount');
+  dataService.getBlockchain((err) => {
+    if (err || !toId || !from || !amount) {
+      res.send(JSON.stringify({ error: err.message }, null, 2));
+    } else {
+      // blockchain.addTransaction(new Transaction(from, toId, amount));
+      // blockchain.mine();
+      // TODO: Finish
+      res.send(JSON.stringify({ status: 'success' }));
+    }
+  });
+});
+
 app.listen(PORT, () => console.log(`Running Blockchain API on port ${PORT}`));
