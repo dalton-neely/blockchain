@@ -8,7 +8,6 @@ const Header = () => (
     <nav id={'nav'}>
       <ul>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/balance">Balance</Link></li>
       </ul>
     </nav>
   </div>

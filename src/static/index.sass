@@ -1,6 +1,10 @@
 $body-color: blue
 $text-color: lightgrey
 $background-color-main: #1A1A1B
+$background-color-secondary: #1C1C1C
+$background-color-ternary: #2E2E2E
+$border-color: #2E2E2E
+$border-width: 2px
 
 body
   margin: 0
@@ -33,3 +37,52 @@ body
         color: powderblue
       a:visited
         color: $text-color
+
+.card
+  border: $border-color solid $border-width
+  background-color: $background-color-secondary
+  box-sizing: content-box
+  padding: 10px
+  margin: 10px
+  display: inline-block
+  border-radius: 5px
+  -moz-outline-radius: 5px
+  vertical-align: top
+
+  h3
+    margin-top: 0
+    text-align: center
+    border-bottom: $border-color solid $border-width
+    text-transform: uppercase
+    font-size: 1.5em
+
+  .attention-good-text
+    color: limegreen
+    text-transform: uppercase
+    text-align: center
+
+.main-content
+  margin: 10px
+
+.btn
+  background: none
+  outline: none
+  text-transform: uppercase
+  color: $text-color
+  box-shadow: none
+  border: $border-width solid $border-color
+  box-sizing: content-box
+  padding: 10px 20px
+  cursor: pointer
+  margin: 10px
+
+  &:hover
+    background-color: $background-color-ternary
+    outline: whitesmoke 2px solid
+
+.text-input
+  margin: 10px
+  border: $border-width solid $border-color
+  color: $text-color
+  padding: 10px 5px
+  background-color: $background-color-ternary

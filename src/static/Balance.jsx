@@ -1,4 +1,5 @@
 import React from 'react';
+import { APPLICATION_NAME, CURRENCY_ACRONYM } from './config';
 
 export default function Balance() {
   const [id, setId] = React.useState(null);
@@ -18,13 +19,11 @@ export default function Balance() {
   }, [enter]);
 
   return (
-    <div>
-      <h1>Balance Page</h1>
-      <span>Enter your ID to view your balance: </span>
-      <input type='text' onChange={(event) => setId(event.target.value)}/>
-      <input type='button' value='Enter' onClick={() => setEnter(true)}/>
-      <p>Entered value for ID: {id}</p>
-      <p>Balance: {balance}</p>
+    <div className={'card'}>
+      <h3>Balance</h3>
+      <input type='text' className={'text-input'} placeholder={`Enter your ${APPLICATION_NAME} ID...`} onChange={(event) => setId(event.target.value)}/>
+      <input type='button' value='Enter' className={'btn'} onClick={() => setEnter(true)}/>
+      <p className={'attention-good-text'}>{balance}{(balance || balance === 0) ? ` ${CURRENCY_ACRONYM}` : ''}</p>
     </div>
   );
 }

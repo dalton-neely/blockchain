@@ -1,2 +1,2 @@
 export const APPLICATION_NAME = 'Shilling';
-export const AUTHOR = 'Dalton Neely';
+export const CURRENCY_ACRONYM = 'SHG';
